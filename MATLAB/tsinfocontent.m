@@ -11,5 +11,7 @@ H       = -nansum(prob.*(log(prob)./log(6)),2);
 sprime  = psi(:,1);
 sprime  = sprime(~(sprime==0));
 M0      = sum(diff(sprime)~=0)./size(psi,1);
-[Hmax,idx] = max(H);
+% [Hmax,idx] = max(H);
+Hmax    = max(H);
+idx     = find(H<0.05,1,'first');
 Hts     = [Hmax epsilon(idx) M0];
